@@ -1,8 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
 import styles from './styles';
-import {fonts, images, colors} from '../../theme';
-
+import {fonts, images, colors, perfectSize} from '../../theme';
 export default function Landing() {
   const logoPosition = useRef(new Animated.Value(-500)).current;
   const contentContainerPosition = useRef(new Animated.Value(-500)).current;
