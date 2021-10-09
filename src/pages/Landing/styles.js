@@ -1,6 +1,10 @@
+/* eslint-disable no-undef */
 import {StyleSheet} from 'react-native';
 import {colors, fonts, perfectSize} from '../../theme';
+
+//Styles for landing screen
 export default styles = StyleSheet.create({
+  //Main container style
   container: {
     flex: 1,
     alignItems: 'center',
@@ -10,7 +14,6 @@ export default styles = StyleSheet.create({
   logoContainer: {
     height: '50%',
     width: '100%',
-    // backgroundColor: 'green',
   },
   logo: {
     height: '100%',
@@ -43,7 +46,6 @@ export default styles = StyleSheet.create({
   },
   buttonContentContainer: {
     marginTop: '10%',
-    // backgroundColor: colors.buttonBackgroundColor,
     borderRadius: perfectSize(20),
     alignItems: 'center',
     justifyContent: 'center',
@@ -55,6 +57,13 @@ export default styles = StyleSheet.create({
     borderRadius: perfectSize(20),
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonAnimation: {
+    height: perfectSize(70),
+    backgroundColor: colors.secondaryBackgroundColor,
+    borderRadius: perfectSize(19),
+    position: 'absolute',
+    alignSelf: 'flex-start',
   },
   buttonTitle: {
     fontFamily: fonts.quicksandBold,

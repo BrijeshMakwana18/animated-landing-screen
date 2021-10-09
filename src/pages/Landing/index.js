@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useRef, useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
 import styles from './styles';
-import {fonts, images, colors, perfectSize} from '../../theme';
+import {images, perfectSize} from '../../theme';
+
 export default function Landing() {
+  //Animated values
   const logoPosition = useRef(new Animated.Value(-500)).current;
   const contentContainerPosition = useRef(new Animated.Value(-500)).current;
   const titleOpacity = useRef(new Animated.Value(1)).current;
@@ -11,7 +14,7 @@ export default function Landing() {
   const buttonAnimationWidth = useRef(
     new Animated.Value(perfectSize(200)),
   ).current;
-
+  //Starts the Basic animation of logo and content container
   const startAnimation = () => {
     Animated.parallel([
       Animated.timing(logoPosition, {
@@ -26,8 +29,10 @@ export default function Landing() {
       }),
     ]).start();
   };
+
   useEffect(() => {
     startAnimation();
+    //Once the logo and content container animation finishes then title and tagline will be animated
     setTimeout(() => {
       Animated.parallel([
         Animated.timing(titleOpacity, {
@@ -47,6 +52,7 @@ export default function Landing() {
         }),
       ]).start();
     }, 1000);
+    //Final animation for Let's Start button
     setTimeout(() => {
       Animated.timing(buttonAnimationWidth, {
         toValue: perfectSize(0),
@@ -55,6 +61,7 @@ export default function Landing() {
       }).start();
     }, 2000);
   }, []);
+
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.logoContainer, {top: logoPosition}]}>
@@ -86,14 +93,7 @@ export default function Landing() {
             <Text style={styles.buttonTitle}>{"Let's Start"}</Text>
           </TouchableOpacity>
           <Animated.View
-            style={{
-              height: perfectSize(70),
-              width: buttonAnimationWidth,
-              backgroundColor: colors.secondaryBackgroundColor,
-              borderRadius: perfectSize(19),
-              position: 'absolute',
-              alignSelf: 'flex-start',
-            }}
+            style={[styles.buttonAnimation, {width: buttonAnimationWidth}]}
           />
         </View>
       </Animated.View>
