@@ -8,7 +8,9 @@ export default function Landing() {
   const titleOpacity = useRef(new Animated.Value(1)).current;
   const titlePosition = useRef(new Animated.Value(-500)).current;
   const taglinePosition = useRef(new Animated.Value(500)).current;
-  const buttonAnimationWidth = useRef(new Animated.Value(100));
+  const buttonAnimationWidth = useRef(
+    new Animated.Value(perfectSize(200)),
+  ).current;
 
   const startAnimation = () => {
     Animated.parallel([
@@ -30,21 +32,28 @@ export default function Landing() {
       Animated.parallel([
         Animated.timing(titleOpacity, {
           toValue: 1,
-          duration: 1500,
+          duration: 1000,
           useNativeDriver: false,
         }),
         Animated.timing(titlePosition, {
           toValue: 0,
-          duration: 1500,
+          duration: 1000,
           useNativeDriver: false,
         }),
         Animated.timing(taglinePosition, {
           toValue: 0,
-          duration: 1500,
+          duration: 1000,
           useNativeDriver: false,
         }),
       ]).start();
     }, 1000);
+    setTimeout(() => {
+      Animated.timing(buttonAnimationWidth, {
+        toValue: perfectSize(0),
+        duration: 500,
+        useNativeDriver: false,
+      }).start();
+    }, 2000);
   }, []);
   return (
     <View style={styles.container}>
@@ -78,11 +87,12 @@ export default function Landing() {
           </TouchableOpacity>
           <Animated.View
             style={{
-              height: '100%',
-              width: '100%',
-              backgroundColor: colors.primaryBackgroundColor,
-              borderRadius: 20,
+              height: perfectSize(70),
+              width: buttonAnimationWidth,
+              backgroundColor: colors.secondaryBackgroundColor,
+              borderRadius: perfectSize(19),
               position: 'absolute',
+              alignSelf: 'flex-start',
             }}
           />
         </View>
