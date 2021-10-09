@@ -8,11 +8,15 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: '10%',
   },
-  logo: {
+  logoContainer: {
     height: '50%',
     width: '100%',
-    resizeMode: 'contain',
     // backgroundColor: 'green',
+  },
+  logo: {
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain',
   },
   landingContentContainer: {
     flex: 1,
